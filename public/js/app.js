@@ -5,66 +5,66 @@ const app = {
     app.bindEvents();
   },
 
-  calculateNetSalary: (grossSalary) => {
-    const netSalary = grossSalary * (1 - app.taxes);
-    return Math.round(netSalary);
+  calculateAnnualNetSalary: (annualGrossSalary) => {
+    const annualNetSalary = annualGrossSalary * (1 - app.taxes);
+    return Math.round(annualNetSalary);
   },
 
-  calculateGrossSalary: (netSalary) => {
-    const grossSalary = netSalary / (1 - app.taxes);
-    return Math.round(grossSalary);
+  calculateAnnualGrossSalary: (annualNetSalary) => {
+    const annualGrossSalary = annualNetSalary / (1 - app.taxes);
+    return Math.round(annualGrossSalary);
   },
 
   bindEvents: () => {
-    const grossInput = document.querySelector('#gross_input');
-    grossInput.addEventListener('input', app.updateNetSalary);
+    const annualGrossInput = document.querySelector('#gross_input');
+    annualGrossInput.addEventListener('input', app.updateAnnualNetSalary);
 
-    const netInput = document.querySelector('#net_input');
-    netInput.addEventListener('input', app.updateGrossSalary);
+    const annualNetInput = document.querySelector('#net_input');
+    annualNetInput.addEventListener('input', app.updateAnnualGrossSalary);
   },
 
-  updateNetSalary: (evt) => {
-    const grossInput = evt.target;
+  updateAnnualNetSalary: (evt) => {
+    const annualGrossInput = evt.target;
 
-    const netInput = document.querySelector('#net_input');
-    const netSalarySpan = document.querySelector('#net_salary');
-    const grossSalarySpan = document.querySelector('#gross_salary');
+    const annualNetInput = document.querySelector('#net_input');
+    const annualNetSalarySpan = document.querySelector('#net_salary');
+    const annualGrossSalarySpan = document.querySelector('#gross_salary');
 
-    if (grossInput.value === '') {
-      grossInput.value = '0';
-      netInput.value = '0';
-      netSalarySpan.textContent = '0';
-      grossSalarySpan.textContent = '0';
+    if (annualGrossInput.value === '') {
+      annualGrossInput.value = '0';
+      annualNetInput.value = '0';
+      annualNetSalarySpan.textContent = '0';
+      annualGrossSalarySpan.textContent = '0';
       return;
     }
 
-    const netSalary = app.calculateNetSalary(grossInput.value);
+    const annualNetSalary = app.calculateAnnualNetSalary(annualGrossInput.value);
 
-    netInput.value = netSalary;
-    netSalarySpan.textContent = netSalary;
-    grossSalarySpan.textContent = grossInput.value;
+    annualNetInput.value = annualNetSalary;
+    annualNetSalarySpan.textContent = annualNetSalary;
+    annualGrossSalarySpan.textContent = annualGrossInput.value;
   },
 
-  updateGrossSalary: (evt) => {
-    const netInput = evt.target;
+  updateAnnualGrossSalary: (evt) => {
+    const annualNetInput = evt.target;
 
-    const grossInput = document.querySelector('#gross_input');
-    const netSalarySpan = document.querySelector('#net_salary');
-    const grossSalarySpan = document.querySelector('#gross_salary');
+    const annualGrossInput = document.querySelector('#gross_input');
+    const annualNetSalarySpan = document.querySelector('#net_salary');
+    const annualGrossSalarySpan = document.querySelector('#gross_salary');
 
-    if (netInput.value === '') {
-      netInput.value = '0';
-      grossInput.value = '0';
-      netSalarySpan.textContent = '0';
-      grossSalarySpan.textContent = '0';
+    if (annualNetInput.value === '') {
+      annualNetInput.value = '0';
+      annualGrossInput.value = '0';
+      annualNetSalarySpan.textContent = '0';
+      annualGrossSalarySpan.textContent = '0';
       return;
     }
 
-    const grossSalary = app.calculateGrossSalary(netInput.value);
+    const annualGrossSalary = app.calculateAnnualGrossSalary(annualNetInput.value);
 
-    grossInput.value = grossSalary;
-    grossSalarySpan.textContent = grossSalary;
-    netSalarySpan.textContent = netInput.value;
+    annualGrossInput.value = annualGrossSalary;
+    annualGrossSalarySpan.textContent = annualGrossSalary;
+    annualNetSalarySpan.textContent = annualNetInput.value;
   },
 };
 
