@@ -6,27 +6,9 @@ const app = {
   monthlyNetSalary: 0,
 
   init: () => {
+    console.log('App initialized!');
+    converter.init();
     app.bindEvents();
-  },
-
-  calculateAnnualNetSalary: (annualGrossSalary) => {
-    const annualNetSalary = annualGrossSalary * (1 - app.taxes);
-    return Math.round(annualNetSalary);
-  },
-
-  calculateAnnualGrossSalary: (annualNetSalary) => {
-    const annualGrossSalary = annualNetSalary / (1 - app.taxes);
-    return Math.round(annualGrossSalary);
-  },
-
-  annualSalaryToMonthly: (annualSalary) => {
-    const monthlySalary = annualSalary / 12;
-    return Math.round(monthlySalary);
-  },
-
-  monthlySalaryToAnnual: (monthlySalary) => {
-    const annualSalary = monthlySalary * 12;
-    return Math.round(annualSalary);
   },
 
   bindEvents: () => {
@@ -53,24 +35,24 @@ const app = {
     } else {
       if (id.includes('annual_gross')) {
         app.annualGrossSalary = input.value;
-        app.annualNetSalary = app.calculateAnnualNetSalary(app.annualGrossSalary);
-        app.monthlyGrossSalary = app.annualSalaryToMonthly(app.annualGrossSalary);
-        app.monthlyNetSalary = app.annualSalaryToMonthly(app.annualNetSalary);
+        app.annualNetSalary = converter.calculateAnnualNetSalary(app.annualGrossSalary);
+        app.monthlyGrossSalary = converter.annualSalaryToMonthly(app.annualGrossSalary);
+        app.monthlyNetSalary = converter.annualSalaryToMonthly(app.annualNetSalary);
       } else if (id.includes('annual_net')) {
         app.annualNetSalary = input.value;
-        app.annualGrossSalary = app.calculateAnnualGrossSalary(app.annualNetSalary);
-        app.monthlyGrossSalary = app.annualSalaryToMonthly(app.annualGrossSalary);
-        app.monthlyNetSalary = app.annualSalaryToMonthly(app.annualNetSalary);
+        app.annualGrossSalary = converter.calculateAnnualGrossSalary(app.annualNetSalary);
+        app.monthlyGrossSalary = converter.annualSalaryToMonthly(app.annualGrossSalary);
+        app.monthlyNetSalary = converter.annualSalaryToMonthly(app.annualNetSalary);
       } else if (id.includes('monthly_gross')) {
         app.monthlyGrossSalary = input.value;
-        app.annualGrossSalary = app.monthlySalaryToAnnual(app.monthlyGrossSalary);
-        app.annualNetSalary = app.calculateAnnualNetSalary(app.annualGrossSalary);
-        app.monthlyNetSalary = app.annualSalaryToMonthly(app.annualNetSalary);
+        app.annualGrossSalary = converter.monthlySalaryToAnnual(app.monthlyGrossSalary);
+        app.annualNetSalary = converter.calculateAnnualNetSalary(app.annualGrossSalary);
+        app.monthlyNetSalary = converter.annualSalaryToMonthly(app.annualNetSalary);
       } else if (id.includes('monthly_net')) {
         app.monthlyNetSalary = input.value;
-        app.annualNetSalary = app.monthlySalaryToAnnual(app.monthlyNetSalary);
-        app.annualGrossSalary = app.calculateAnnualGrossSalary(app.annualNetSalary);
-        app.monthlyGrossSalary = app.annualSalaryToMonthly(app.annualGrossSalary);
+        app.annualNetSalary = converter.monthlySalaryToAnnual(app.monthlyNetSalary);
+        app.annualGrossSalary = converter.calculateAnnualGrossSalary(app.annualNetSalary);
+        app.monthlyGrossSalary = converter.annualSalaryToMonthly(app.annualGrossSalary);
       }
     }
 
