@@ -1,6 +1,6 @@
 # brutennet
 
-Extension Google Chrome ayant pour but de fournir une solution pour les conversions de salaires brut en net
+Extension Google Chrome ayant pour but de fournir une solution pour les conversions de salaires (exemples: brut en net, annuel net en mensuel net)
 
 ## Liste des features
 
