@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "Brut en Net",
+  "description": "Transformez vos salaires bruts en net en un clin d'œil avec notre extension Chrome pratique.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html"
+  }
+}
