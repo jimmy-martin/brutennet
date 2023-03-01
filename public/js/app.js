@@ -21,6 +21,18 @@ const app = {
     annualNetInput.addEventListener('input', app.updateSalary);
     const monthlyNetInput = document.querySelector('#monthly_net_input');
     monthlyNetInput.addEventListener('input', app.updateSalary);
+
+    const resetButton = document.querySelector('#reset');
+    resetButton.addEventListener('click', app.resetSalaries);
+  },
+
+  resetSalaries: (evt) => {
+    app.annualGrossSalary = 0;
+    app.annualNetSalary = 0;
+    app.monthlyGrossSalary = 0;
+    app.monthlyNetSalary = 0;
+
+    app.updateSalariesDisplay();
   },
 
   updateSalary: (evt) => {
