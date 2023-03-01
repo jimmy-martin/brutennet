@@ -4,6 +4,7 @@
   "description": "Transformez vos salaires bruts en net en un clin d'œil avec notre extension Chrome pratique.",
   "version": "1.0",
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_icon": "ben-logo.png"
   }
 }
