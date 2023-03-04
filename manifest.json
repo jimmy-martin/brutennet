@@ -6,5 +6,14 @@
   "action": {
     "default_popup": "index.html",
     "default_icon": "ben-logo.png"
+  },
+  "permissions": ["contextMenus"],
+  "background": {
+    "service_worker": "chromeContext.js"
+  },
+  "icons" : {
+    "16": "ben-logo.png",
+    "48": "ben-logo.png",
+    "128": "ben-logo.png"
   }
 }
