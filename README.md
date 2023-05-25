@@ -9,4 +9,4 @@ Extension Google Chrome ayant pour but de fournir une solution pour les conversi
 
 ## Liste des améliorations
 
-- Ajouter une/des option(s) sur le clic droit qui permet de convertir un directement (net/brut, annuel/mensuel)
+- Ajouter une/des option(s) sur le clic droit qui permet de convertir un chiffre directement à partir de la sélection (net/brut, annuel/mensuel)
